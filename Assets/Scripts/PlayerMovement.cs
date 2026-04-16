@@ -119,7 +119,12 @@ public class PlayerMovement : PlayerForm
             {
                 //SceneManager.LoadScene(SceneManager.GetActiveScene().name); // !!! 
                 PlayerDeath.Die();
-            } 
+            }
+            else if (normal.y < 0.98) // Pokud narazí na roh
+            {
+                // Posuneme hráèe trochu nahoru, aby se nezasekl
+                playerTransform.position += new Vector3(0, 0.1f, 0);
+            }
 
         }  
 
