@@ -22,6 +22,9 @@ public class PlayerMovement : PlayerForm
     public float rotationSpeed = 360f;
     private float targetAngle = 0f;
     private bool isRotating = false;
+    private bool isJumping = false;
+    private float jumpHoldTimer = 0f;
+    public float maxJumpHoldTime = 0.2f; // Maximální doba podržení pro vyšší skok
 
     void Start()    // Funkce od Unity která se volá pouze jednou pøi spuštìní programu
     {
@@ -56,7 +59,30 @@ public class PlayerMovement : PlayerForm
         {
             Jump();
             StartRotation();
+            isJumping = true;
+            jumpHoldTimer = 0f;
+        }
 
+        if (isJumping)
+        {
+            if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
+            {
+                jumpHoldTimer += Time.deltaTime;
+                if (jumpHoldTimer >= maxJumpHoldTime)
+                {
+                    // Dosáhli jsme maximální doby podržení, už jen pøestaneme sledovat (plná výška skoku)
+                    isJumping = false;
+                }
+            }
+            else
+            {
+                // Tlaèítko bylo puštìno pøed limitem -> zkrátíme skok (snížíme vertikální rychlost)
+                if (rb.linearVelocityY > 0)
+                {
+                    rb.linearVelocityY *= 0.5f;
+                }
+                isJumping = false;
+            }
         }
 
         if (isRotating)
@@ -95,7 +121,7 @@ public class PlayerMovement : PlayerForm
 
     void Jump()
     {
-        rb.linearVelocityY = jumpForce;   // Nastavení hráèovo rychlosti ve smìru Y na jumpForce
+        rb.linearVelocityY = jumpForce * 1.3f;   // Zaèneme skokem s maximální možnou silou
         isGrounded = false;
     }
 
