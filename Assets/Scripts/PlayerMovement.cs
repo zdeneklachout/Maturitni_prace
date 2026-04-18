@@ -23,6 +23,7 @@ public class PlayerMovement : PlayerForm
     private float targetAngle = 0f;
     private bool isRotating = false;
 
+    public bool isJumping = false;
     void Start()    // Funkce od Unity která se volá pouze jednou pøi spuštìní programu
     {
         //rb = GetComponent<Rigidbody2D>();    // Získám konkrétní Rigidbody2D které je v Unity pøipojeno k hráèovi 
@@ -53,9 +54,15 @@ public class PlayerMovement : PlayerForm
         
 
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && isGrounded && PauseMenuCaller.gamePaused == false)   // Pokud hráè stiskne mezerník nebo levé tlaèítko myši
-        {
+        {   
             Jump();
             StartRotation();
+            isJumping = true;
+
+        }
+        else
+        {
+            isJumping = false;
 
         }
 

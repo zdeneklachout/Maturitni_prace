@@ -6,7 +6,7 @@ public class FinishLine : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(Time.time);
+        //Debug.Log(Time.time);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -2102,6 +2102,7 @@ MonoBehaviour:
   playerMovement: {fileID: 1336379377}
   offsetX: 2
   offsetY: 4
+  playerFormManager: {fileID: 1936586554}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19003,6 +19004,7 @@ MonoBehaviour:
   isGrounded: 0
   newGround: 0
   rotationSpeed: 360
+  isJumping: 0
 --- !u!4 &1337090988 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9112473236027713383, guid: ef7c89953309c114993ef684b77ee697, type: 3}
@@ -20018,7 +20020,7 @@ Transform:
   m_GameObject: {fileID: 1936586546}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
