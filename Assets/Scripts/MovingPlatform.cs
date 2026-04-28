@@ -22,7 +22,9 @@ public class MovingPlatform : MonoBehaviour
 
         if (distance < radius)
         {
-            transform.position = Vector2.MoveTowards(transform.position, platformStartPos + Vector3.up * elevation, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, 
+                                                     platformStartPos + Vector3.up * elevation, 
+                                                     speed * Time.deltaTime);
         }
     }
 }

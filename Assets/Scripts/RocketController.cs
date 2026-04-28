@@ -31,25 +31,13 @@ public class RocketController : PlayerForm
     { 
         rb.linearVelocityX = speed;
 
-        if ((Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) && PauseMenuCaller.gamePaused == false)
+        if ((Input.GetKey(KeyCode.Space) && PauseMenuCaller.gamePaused == false || Input.GetMouseButton(0)) && PauseMenuCaller.gamePaused == false)
         {
             thrustVector = new Vector2(0, Mathf.MoveTowards(rb.linearVelocityY, Maxthrust ,thrust * Time.deltaTime));
             rb.linearVelocityY = thrustVector.y; 
             rotationUp = true; 
 
             targetAngle = 30f;
-
-            /*
-            if (rb.linearVelocityY > Maxthrust)   // nastaveni maximalni rychlosti stoupani
-            {
-                rb.linearVelocityY = Maxthrust;
-            } 
-
-            if (rb.linearVelocityY < -Maxthrust)  // nastaveni maximalni rychlosti padani
-            {
-                rb.linearVelocityY = -Maxthrust;
-            } 
-            */
 
             if (time >= 0f && rotationDown)    
             {
